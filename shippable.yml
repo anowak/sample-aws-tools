@@ -1,0 +1,14 @@
+language: php
+
+script:
+  - true # this build does not really do anything useful
+
+before_archive:
+  - >
+    which aws || (
+      wget -N https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -P /tmp &&
+      unzip /tmp/awscli-bundle.zip -d /tmp &&
+      /tmp/awscli-bundle/install -b ~/bin/aws)
+  # Alternatively:
+  # - virtualenv ve && source ve/bin/activate && pip install awscli
+  - which aws
